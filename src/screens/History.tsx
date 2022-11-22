@@ -2,18 +2,18 @@ import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import {colors} from '../constants';
 
-const Home = () => {
+const History = () => {
   return (
     <View>
-      <Text style={styles.text}>Home Screen</Text>
+      <Text style={styles.text}>History Screen</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.gray,
+    color: colors.white,
   },
 });
 
-export default Home;
+export default History;
