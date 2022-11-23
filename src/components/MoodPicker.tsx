@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { View, StyleSheet, Text, Pressable } from 'react-native';
+
+// locals
 import { theme } from '../constants';
 import { MoodOptionType } from '../types';
 
@@ -30,10 +32,9 @@ const MoodPicker: React.FC<MoodPickerProps> = ({ onSelect }) => {
       <Text style={styles.heading}>How are you right now?</Text>
       <View style={styles.moodList}>
         {moodOptions.map(option => (
-          <View>
+          <View key={option.emoji}>
             <Pressable
               onPress={() => setSelectedMood(option)}
-              key={option.emoji}
               style={[
                 styles.moodItem,
                 option.emoji === selectedMood?.emoji
@@ -42,7 +43,7 @@ const MoodPicker: React.FC<MoodPickerProps> = ({ onSelect }) => {
               ]}>
               <Text style={styles.moodText}>{option.emoji}</Text>
             </Pressable>
-            <Text key={option.id} style={styles.descriptionText}>
+            <Text style={styles.descriptionText}>
               {selectedMood?.emoji === option.emoji ? option.description : ' '}
             </Text>
           </View>
