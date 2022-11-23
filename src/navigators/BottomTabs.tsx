@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {History, Home} from '../screens';
+import {Analytics, History, Home} from '../screens';
 
 const Tabs = createBottomTabNavigator();
 
@@ -9,6 +9,7 @@ const BottomTabs: React.FC = () => {
     <Tabs.Navigator>
       <Tabs.Screen name="Home" component={Home} />
       <Tabs.Screen name="History" component={History} />
+      <Tabs.Screen name="Analytics" component={Analytics} />
     </Tabs.Navigator>
   );
 };
