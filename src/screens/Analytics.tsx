@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {colors} from '../constants';
+import { View, StyleSheet, Text } from 'react-native';
+import { colors } from '../constants';
 
 const moodOptions = [
-  {emoji: '🧑‍💻', description: 'studious'},
-  {emoji: '🤔', description: 'pensive'},
-  {emoji: '😊', description: 'happy'},
-  {emoji: '🥳', description: 'celebratory'},
-  {emoji: '😤', description: 'frustrated'},
+  { emoji: '🧑‍💻', description: 'studious' },
+  { emoji: '🤔', description: 'pensive' },
+  { emoji: '😊', description: 'happy' },
+  { emoji: '🥳', description: 'celebratory' },
+  { emoji: '😤', description: 'frustrated' },
 ];
 
 const Analytics: React.FC = () => {
