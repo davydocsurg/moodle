@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { colors } from '../constants';
+import { colors, theme } from '../constants';
 
 const moodOptions = [
   { emoji: '🧑‍💻', description: 'studious' },
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.gray,
+    fontFamily: theme.fontFamilyLight,
   },
   moodText: {
     fontSize: 24,

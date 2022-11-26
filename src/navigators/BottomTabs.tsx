@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { theme } from '../constants';
-import { AnalyticsIcon, HistoryIcon, HomeIcon } from '../icons';
+import { AnalyticsIcon, HistoryIcon, HomeIcon } from '../assets/icons';
 import { Analytics, History, Home } from '../screens';
 
 const Tabs = createBottomTabNavigator();
@@ -11,6 +11,7 @@ const BottomTabs: React.FC = () => {
     <Tabs.Navigator
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: theme.colorBlue,
+        headerTitleStyle: { fontFamily: theme.fontFamilyBold },
         tabBarInactiveTintColor: theme.colorGrey,
         tabBarIcon: ({ color, size }) => {
           if (route.name === 'Home') {
