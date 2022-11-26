@@ -1,11 +1,17 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {colors} from '../constants';
+import { View, StyleSheet } from 'react-native';
+import { MoodItemRow } from '../components';
+import { colors } from '../constants';
+import { useMoodListContext } from '../contexts/MoodListProvider';
 
 const History: React.FC = () => {
+  const { moodList, handleMoodSelect } = useMoodListContext();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>History Screen</Text>
+      {moodList.map(item => (
+        <MoodItemRow item={item} key={item.timestamp} />
+      ))}
     </View>
   );
 };

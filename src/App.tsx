@@ -1,13 +1,16 @@
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {StyleSheet, SafeAreaView} from 'react-native';
-import {BottomTabs} from './navigators';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import { MoodListProvider } from './contexts';
+import { BottomTabs } from './navigators';
 
 const App: React.FC = () => {
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.container}>
-        <BottomTabs />
+        <MoodListProvider>
+          <BottomTabs />
+        </MoodListProvider>
       </SafeAreaView>
     </NavigationContainer>
   );
