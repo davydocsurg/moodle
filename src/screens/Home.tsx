@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
 // locals
 import { MoodItemRow, MoodPicker } from '../components';
@@ -11,15 +11,17 @@ const Home: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <MoodPicker onSelect={handleMoodSelect} />
-      {moodList.map(item => (
-        <View key={item.mood.id}>
-          <Text style={styles.text}>
-            {/* {item.mood.emoji} {moment(new Date(item.timestamp)).calendar()}{' '} */}
-          </Text>
-          <MoodItemRow item={item} key={item.timestamp} />
-        </View>
-      ))}
+      <ScrollView>
+        <MoodPicker onSelect={handleMoodSelect} />
+        {moodList.map(item => (
+          <View key={item.mood.id}>
+            <Text style={styles.text}>
+              {/* {item.mood.emoji} {moment(new Date(item.timestamp)).calendar()}{' '} */}
+            </Text>
+            <MoodItemRow item={item} key={item.timestamp} />
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 };
