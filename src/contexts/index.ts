@@ -1,3 +1,3 @@
-import { MoodListProvider } from './MoodListProvider';
+import { MoodListProvider, useMoodListContext } from './MoodListProvider';
 
-export { MoodListProvider };
+export { MoodListProvider, useMoodListContext };

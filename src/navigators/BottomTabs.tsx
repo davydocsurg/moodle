@@ -32,17 +32,17 @@ const BottomTabs: React.FC = () => {
       <Tabs.Screen
         name="Home"
         component={Home}
-        options={{ title: "Today's Mood" }}
+        options={{ headerTitle: "Today's Mood" }}
       />
       <Tabs.Screen
         name="History"
         component={History}
-        options={{ title: 'Past Moods' }}
+        options={{ headerTitle: 'Past Moods' }}
       />
       <Tabs.Screen
         name="Analytics"
         component={Analytics}
-        options={{ title: 'Charts' }}
+        options={{ headerTitle: 'Charts' }}
       />
     </Tabs.Navigator>
   );

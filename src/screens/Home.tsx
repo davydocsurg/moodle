@@ -13,14 +13,13 @@ const Home: React.FC = () => {
     <View style={styles.container}>
       <ScrollView>
         <MoodPicker onSelect={handleMoodSelect} />
-        {moodList.map(item => (
+        {/* {moodList.map(item => (
           <View key={item.mood.id}>
             <Text style={styles.text}>
-              {/* {item.mood.emoji} {moment(new Date(item.timestamp)).calendar()}{' '} */}
             </Text>
             <MoodItemRow item={item} key={item.timestamp} />
           </View>
-        ))}
+        ))} */}
       </ScrollView>
     </View>
   );

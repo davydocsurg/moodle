@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 type MoodListContextType = {
   moodList: MoodOptionWithTimestamp[];
   handleMoodSelect: (mood: MoodOptionType) => void;
+  handleDeleteMood: (mood: MoodOptionWithTimestamp) => void;
 };
 
 type AppData = {
@@ -43,6 +44,7 @@ const getAppData = async (): Promise<AppData | null> => {
 const MoodListContext = createContext<MoodListContextType>({
   moodList: [],
   handleMoodSelect: () => {},
+  handleDeleteMood: () => {},
 });
 
 export const MoodListProvider: React.FC = ({
@@ -62,6 +64,19 @@ export const MoodListProvider: React.FC = ({
     });
   }, []);
 
+  const handleDeleteMood = React.useCallback(
+    (mood: MoodOptionWithTimestamp) => {
+      setMoodList(current => {
+        const newValue = current.filter(
+          item => item.timestamp !== mood.timestamp,
+        );
+        setAppData({ moodList: newValue });
+        return newValue;
+      });
+    },
+    [],
+  );
+
   const getDataFromStorage = async () => {
     const data = await getAppData();
 
@@ -71,7 +86,8 @@ export const MoodListProvider: React.FC = ({
   };
 
   return (
-    <MoodListContext.Provider value={{ moodList, handleMoodSelect }}>
+    <MoodListContext.Provider
+      value={{ moodList, handleMoodSelect, handleDeleteMood }}>
       {children}
     </MoodListContext.Provider>
   );

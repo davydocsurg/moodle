@@ -1,8 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, Platform, UIManager } from 'react-native';
 import { MoodListProvider } from './contexts';
 import { BottomTabs } from './navigators';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 const App: React.FC = () => {
   return (
