@@ -1,5 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { View, StyleSheet, Text, Pressable } from 'react-native';
+import Reanimated, {
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 
 // locals
 import { theme } from '../constants';
@@ -19,11 +23,23 @@ type MoodPickerProps = {
 
 const MoodPicker: React.FC<MoodPickerProps> = ({ onSelect }) => {
   const [selectedMood, setSelectedMood] = useState<MoodOptionType>();
+  const [hasSelected, setHasSelected] = useState(false);
+
+  const buttonStyle = useAnimatedStyle(
+    () => ({
+      opacity: selectedMood ? withTiming(1) : withTiming(0.5),
+      transform: [{ scale: selectedMood ? withTiming(1) : 0.8 }],
+    }),
+    [],
+  );
+
+  const ReanimatedPressable = Reanimated.createAnimatedComponent(Pressable);
 
   const handleSelect = useCallback(() => {
     if (selectedMood) {
       onSelect(selectedMood);
       setSelectedMood(undefined);
+      setHasSelected(true);
     }
   }, [onSelect, selectedMood]);
 
@@ -49,9 +65,11 @@ const MoodPicker: React.FC<MoodPickerProps> = ({ onSelect }) => {
           </View>
         ))}
       </View>
-      <Pressable style={styles.button} onPress={handleSelect}>
+      <ReanimatedPressable
+        style={[styles.button, buttonStyle]}
+        onPress={handleSelect}>
         <Text style={styles.buttonText}>Choose</Text>
-      </Pressable>
+      </ReanimatedPressable>
     </View>
   );
 };
