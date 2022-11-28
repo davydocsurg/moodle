@@ -13,6 +13,7 @@ import Reanimated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
+  runOnJS,
 } from 'react-native-reanimated';
 
 // locals
@@ -34,6 +35,12 @@ export const MoodItemRow: React.FC<MoodItemRowProps> = ({ item }) => {
     handleDeleteMood(item);
   }, [handleDeleteMood, item]);
 
+  const deleteWithDelay = useCallback(() => {
+    setTimeout(() => {
+      handleDelete();
+    }, 500);
+  }, [handleDelete]);
+
   const onGestureEvent = useAnimatedGestureHandler(
     {
       onActive: e => {
@@ -42,7 +49,7 @@ export const MoodItemRow: React.FC<MoodItemRowProps> = ({ item }) => {
       onEnd: e => {
         if (Math.abs(e.translationX) > maxSwipe) {
           translateX.value = withTiming(1000 * Math.sign(e.translationX));
-          console.warn('hey');
+          runOnJS(deleteWithDelay)();
         } else {
           translateX.value = withTiming(0);
         }
