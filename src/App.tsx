@@ -1,5 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
+import Splashscreen from 'react-native-splash-screen';
+
+// locals
 import { StyleSheet, SafeAreaView, Platform, UIManager } from 'react-native';
 import { MoodListProvider } from './contexts';
 import { BottomTabs } from './navigators';
@@ -11,6 +14,10 @@ if (Platform.OS === 'android') {
 }
 
 const App: React.FC = () => {
+  useEffect(() => {
+    Splashscreen.hide();
+  }, []);
+
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.container}>
